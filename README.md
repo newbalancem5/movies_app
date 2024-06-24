@@ -40,6 +40,37 @@ make run
 ```
 
 
+## Структура проекта
+
+```plaintext
+movies_app/
+├── assets/                         # Статические ресурсы, включая .env файл
+├── lib/                            # Основной код приложения
+│   ├── bloc/                       # Логика управления состоянием с использованием Bloc
+│   │   ├── movie_event/            # События Bloc
+│   │   │   └── movie_event.dart    # Определения событий
+│   │   ├── movie_state/            # Состояния Bloc
+│   │   │   └── movie_state.dart    # Определения состояний
+│   │   └── movie_bloc.dart         # Реализация MovieBloc
+│   ├── components/                 # Повторно используемые UI-компоненты
+│   │   └── movie_card.dart         # Карточка фильма
+│   ├── models/                     # Модели данных
+│   │   └── movie_models/           # Модели данных для фильмов
+│   │       └── movie_models.dart   # Модель данных для фильма
+│   ├── service/                    # Сервисы для взаимодействия с API
+│   │   └── api_service.dart        # Реализация API сервиса
+│   ├── ui/                         # Пользовательские интерфейсы
+│   │   ├── home_page.dart          # Главная страница
+│   │   ├── movie_detail_page.dart  # Страница деталей фильма
+│   │   ├── movie_list_page.dart    # Страница списка фильмов
+│   │   └── movie_search_page.dart  # Страница поиска фильмов
+│   └── main.dart                   # Точка входа в приложение                # Тесты для приложения
+├── pubspec.yaml                    # Файл конфигурации Flutter/Dart
+├── README.md                       # Документация проекта
+└── Makefile                        # Makefile для удобного управления задачами
+
+
+
 
 Скриншоты
 
