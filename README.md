@@ -64,7 +64,7 @@ movies_app/
 │   │   ├── movie_detail_page.dart  # Страница деталей фильма
 │   │   ├── movie_list_page.dart    # Страница списка фильмов
 │   │   └── movie_search_page.dart  # Страница поиска фильмов
-│   └── main.dart                   # Точка входа в приложение                # Тесты для приложения
+│   └── main.dart                   # Точка входа в приложение                
 ├── pubspec.yaml                    # Файл конфигурации Flutter/Dart
 ├── README.md                       # Документация проекта
 └── Makefile                        # Makefile для удобного управления задачами
