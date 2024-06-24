@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/bloc/movie/movie_bloc.dart';
 import 'package:movies_app/bloc/movie/movie_event/movie_event.dart';
-import 'package:movies_app/ui/movie_search.dart';
+import 'package:movies_app/ui/movie_search_page.dart';
 import 'movie_list_page.dart';
 
 class HomePage extends StatefulWidget {
