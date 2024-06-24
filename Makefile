@@ -17,6 +17,12 @@ install:
 	@echo "╠ flutter pub get 🧱"
 	flutter pub get
 
+# Run in debug mode
+.PHONY: run
+run:
+	@echo "╠ flutter run"
+	flutter run
+
 # Clean project
 .PHONY: clean
 clean:
