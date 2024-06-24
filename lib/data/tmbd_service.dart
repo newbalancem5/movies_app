@@ -2,7 +2,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:movies_app/domain/movie/movie.dart';
+import 'package:movies_app/models/movie/movie_models.dart';
 
 class TmdbService {
   final Dio dio;
