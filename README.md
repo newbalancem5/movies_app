@@ -12,5 +12,8 @@ env файл лежит в assets .env В идеале будет скрыт, н
 
 Скриншоты
 
-![Главная](github/screen/main.png)
-![Поиск](github/screen/search.png)
+
+<p>
+<img src="github/screen/main.png" width="250" />
+  <img src="github/screen/search.png" width="250" />
+  </p>
