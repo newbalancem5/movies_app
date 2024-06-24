@@ -37,5 +37,6 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
 
   void _onClearSearch(ClearSearch event, Emitter<MovieState> emit) {
     emit(const MovieState.initial());
+    add(const FetchPopularMovies());
   }
 }

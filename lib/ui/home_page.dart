@@ -1,6 +1,7 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_app/bloc/movie/movie_bloc.dart';
+import 'package:movies_app/bloc/movie/movie_event/movie_event.dart';
 import 'package:movies_app/ui/movie_search.dart';
 import 'movie_list_page.dart';
 
@@ -19,6 +20,11 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _currentIndex = index;
     });
+
+    // Сбрасываем состояние поиска при переключении на вкладку "Главная"
+    if (index == 0) {
+      context.read<MovieBloc>().add(const MovieEvent.clearSearch());
+    }
   }
 
   @override

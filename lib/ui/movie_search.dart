@@ -12,63 +12,61 @@ class SearchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PopScope(
-      onPopInvoked: (result) async {
-        context.read<MovieBloc>().add(const MovieEvent.clearSearch());
-      },
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Поиск фильмов'),
-        ),
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextField(
-                controller: _controller,
-                decoration: const InputDecoration(
-                  labelText: 'Введите название фильма',
-                  border: OutlineInputBorder(),
-                ),
-                onChanged: (query) {
-                  if (query.isNotEmpty) {
-                    context.read<MovieBloc>().add(MovieEvent.searchMovies(query));
-                  } else {
-                    context.read<MovieBloc>().add(const MovieEvent.clearSearch());
-                  }
-                },
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Поиск фильмов'),
+      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: _controller,
+              decoration: const InputDecoration(
+                labelText: 'Введите название фильма',
+                border: OutlineInputBorder(),
               ),
+              onChanged: (query) {
+                if (query.isNotEmpty) {
+                  context.read<MovieBloc>().add(MovieEvent.searchMovies(query));
+                } else {
+                  context.read<MovieBloc>().add(const MovieEvent.clearSearch());
+                }
+              },
             ),
-            Expanded(
-              child: BlocBuilder<MovieBloc, MovieState>(
-                builder: (context, state) {
-                  if (state is Loading) {
-                    return const Center(child: CircularProgressIndicator());
-                  } else if (state is Loaded) {
-                    return GridView.builder(
-                      padding: const EdgeInsets.all(8.0),
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        childAspectRatio: 0.7,
-                        crossAxisSpacing: 8.0,
-                        mainAxisSpacing: 8.0,
-                      ),
-                      itemCount: state.movies.length,
-                      itemBuilder: (context, index) {
-                        final movie = state.movies[index];
-                        return MovieCard(movie: movie);
-                      },
-                    );
-                  } else if (state is Error) {
-                    return Center(child: Text(state.message));
-                  } else {
-                    return const Center(child: Text('Введите название фильма для поиска'));
+          ),
+          Expanded(
+            child: BlocBuilder<MovieBloc, MovieState>(
+              builder: (context, state) {
+                if (state is Loading) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (state is Loaded) {
+                  if (state.movies.isEmpty) {
+                    return const Center(child: Text('Нет результатов для отображения'));
                   }
-                },
-              ),
+                  return GridView.builder(
+                    padding: const EdgeInsets.all(8.0),
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 0.7,
+                      crossAxisSpacing: 8.0,
+                      mainAxisSpacing: 8.0,
+                    ),
+                    itemCount: state.movies.length,
+                    itemBuilder: (context, index) {
+                      final movie = state.movies[index];
+                      return MovieCard(movie: movie);
+                    },
+                  );
+                } else if (state is Error) {
+                  return Center(child: Text(state.message));
+                } else {
+                  return const Center(child: Text('Введите название фильма для поиска'));
+                }
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
