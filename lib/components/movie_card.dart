@@ -34,7 +34,7 @@ class MovieCard extends StatelessWidget {
               child: CachedNetworkImage(
                 imageUrl: 'https://image.tmdb.org/t/p/w200${movie.posterPath}',
                 placeholder: (context, url) => Container(
-                  height: 180,
+                  height: 140,
                   color: Colors.grey[200],
                   child: const Center(child: CircularProgressIndicator()),
                 ),
@@ -43,8 +43,8 @@ class MovieCard extends StatelessWidget {
                   color: Colors.grey[200],
                   child: const Center(child: Icon(Icons.error)),
                 ),
-                height: 180,
-                width: double.infinity,
+                height: 140,
+                width: double.maxFinite,
                 fit: BoxFit.cover,
               ),
             ),
